@@ -61,4 +61,4 @@ python -m http.server 8080
 
 ## 聯絡/貢獻
 - 歡迎提出 issue 或 pull request。
-- 聯絡方式：請於 GitHub 留言或來信專案維護者。
+- 聯絡方式：Freedom_Duke
