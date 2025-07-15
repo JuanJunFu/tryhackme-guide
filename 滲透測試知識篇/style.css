@@ -1,0 +1,1361 @@
+/* 重置樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 導航欄樣式 */
+.navbar {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #f39c12;
+}
+
+/* 首頁英雄區塊 */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    margin-top: 70px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-description {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.vulnerability-stats {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.vulnerability-stats h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f39c12;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.stats-note {
+    text-align: center;
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.cta-button:hover {
+    background-color: #e67e22;
+}
+
+/* 區塊標題 */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* 核心條件區塊 */
+.conditions-section {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.condition-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid;
+}
+
+.condition-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.condition-card.vulnerable {
+    border-top-color: #e74c3c;
+}
+
+.condition-card.exploitable {
+    border-top-color: #f39c12;
+}
+
+.condition-card.unprotected {
+    border-top-color: #3498db;
+}
+
+.condition-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.vulnerable .condition-icon {
+    color: #e74c3c;
+}
+
+.exploitable .condition-icon {
+    color: #f39c12;
+}
+
+.unprotected .condition-icon {
+    color: #3498db;
+}
+
+.condition-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.condition-card p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.condition-card ul {
+    list-style: none;
+    text-align: left;
+}
+
+.condition-card li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    color: #555;
+}
+
+.condition-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* 攻擊階段區塊 */
+.stages-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.stage-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.stage-nav-btn {
+    background-color: #ecf0f1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.stage-nav-btn:hover,
+.stage-nav-btn.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.stages-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stage-card {
+    display: none;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.stage-card.active {
+    display: block;
+}
+
+.stage-header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.stage-number {
+    font-size: 3rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.stage-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.stage-purpose {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.stage-content {
+    padding: 2rem;
+}
+
+.tools-section h4 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tool-item {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.tool-item:hover {
+    background-color: #e3f2fd;
+}
+
+.tool-item code {
+    background-color: #2c3e50;
+    color: #f8f9fa;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.tool-item span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.primary-tool {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid #3498db;
+}
+
+.primary-tool h5 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.primary-tool p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.primary-tool ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    color: #555;
+}
+
+/* 現代技術和進階工具樣式 */
+.modern-techniques, .automation-frameworks, .social-engineering-attacks, .advanced-delivery {
+    background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid #27ae60;
+}
+
+.modern-techniques h4, .automation-frameworks h4, .social-engineering-attacks h4, .advanced-delivery h4 {
+    color: #27ae60;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tool-item.featured {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border-left: 3px solid #f39c12;
+    font-weight: 500;
+}
+
+.attack-method {
+    background: white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid #e74c3c;
+}
+
+.attack-method h5 {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.attack-method ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    color: #555;
+}
+
+.attack-method li {
+    margin-bottom: 0.5rem;
+}
+
+.technique-list {
+    margin-top: 1rem;
+}
+
+.technique-item {
+    background: white;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #3498db;
+}
+
+.technique-item strong {
+    color: #2c3e50;
+}
+
+.internal-recon, .malicious-documents, .evasion-techniques {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid #3498db;
+}
+
+.internal-recon h4, .malicious-documents h4, .evasion-techniques h4 {
+    color: #3498db;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.primary-tool li {
+    margin-bottom: 0.5rem;
+}
+
+/* 核心條件在第4階段的應用 */
+.core-conditions {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid #f39c12;
+}
+
+.core-conditions h4 {
+    color: #d68910;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.conditions-in-stage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.condition-detail {
+    background: white;
+    border-radius: 5px;
+    padding: 1rem;
+    border-left: 3px solid;
+}
+
+.condition-detail.vulnerable {
+    border-left-color: #e74c3c;
+}
+
+.condition-detail.exploitable {
+    border-left-color: #f39c12;
+}
+
+.condition-detail.unprotected {
+    border-left-color: #3498db;
+}
+
+.condition-detail h5 {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.condition-detail p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 防禦工具區塊 */
+.defense-section {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.defense-categories {
+    display: grid;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.defense-category {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 2rem;
+    border-top: 4px solid #27ae60;
+}
+
+.defense-category h3 {
+    color: #27ae60;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.defense-content .primary-tool {
+    background: white;
+    border-left-color: #27ae60;
+}
+
+.defense-tool {
+    background: white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    border-left: 3px solid #27ae60;
+}
+
+.defense-tool h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.defense-tool p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.event-logs {
+    background: white;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.event-logs h5 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.event-logs ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    color: #555;
+}
+
+.event-logs li {
+    margin-bottom: 0.5rem;
+}
+
+.detection-methods {
+    background: white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.detection-methods h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.detection-methods ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    color: #555;
+}
+
+.detection-methods li {
+    margin-bottom: 0.5rem;
+}
+
+.anomaly-indicators {
+    background: white;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.anomaly-indicators h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.anomaly-indicators p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+}
+
+.indicator {
+    background: #e74c3c;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 3px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* 頁腳 */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .conditions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stage-navigation {
+        gap: 0.25rem;
+    }
+    
+    .stage-nav-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .stage-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .kill-chain-visualization {
+        padding: 2rem 1rem;
+    }
+    
+    .chain-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .diagram-section {
+        padding: 1.5rem;
+    }
+    
+    .diagram-section h4 {
+        font-size: 1.2rem;
+    }
+    
+    .kill-chain-diagram {
+        max-width: 100%;
+    }
+    
+    .diagram-caption {
+        font-size: 0.9rem;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .conditions-in-stage {
+        grid-template-columns: 1fr;
+    }
+    
+    .indicators-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+/* 滾動行為 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 自定義滾動條 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+/* 案例研究區塊樣式 */
+.case-study-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.warning-banner {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.warning-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.warning-content i {
+    font-size: 3rem;
+    opacity: 0.9;
+}
+
+.warning-text h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.vulnerability-overview {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid #e74c3c;
+}
+
+.vulnerability-overview h3 {
+    color: #e74c3c;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.vuln-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.vuln-info, .vuln-impact {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.vuln-info h4, .vuln-impact h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.environment-diagram {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.environment-diagram h3 {
+    color: #3498db;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.network-topology {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.network-segment {
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.network-segment.dmz {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #f39c12;
+}
+
+.network-segment.internal {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    border: 2px solid #17a2b8;
+}
+
+.network-segment h4 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.network-devices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.device {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    border: 2px solid #e9ecef;
+    position: relative;
+}
+
+.device i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+}
+
+.device.vulnerable {
+    border-color: #e74c3c;
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+}
+
+.device.vulnerable i {
+    color: #e74c3c;
+}
+
+.vuln-indicator {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #e74c3c;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.attack-flow {
+    border-top: 2px solid #e9ecef;
+    padding-top: 2rem;
+}
+
+.attack-flow h4 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.flow-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    min-width: 200px;
+}
+
+.step-number {
+    background: rgba(255, 255, 255, 0.2);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-weight: bold;
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.hacker-exploitation {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid #6f42c1;
+}
+
+.hacker-exploitation h3 {
+    color: #6f42c1;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.exploitation-steps {
+    display: grid;
+    gap: 2rem;
+}
+
+.exploit-step {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 3px solid #6f42c1;
+}
+
+.exploit-step h4 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.technique {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.technique h5 {
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.code-block {
+    background: #2c3e50;
+    color: #f8f9fa;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+.code-block code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.post-exploitation {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid #28a745;
+}
+
+.post-exploitation h3 {
+    color: #28a745;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.post-exploit-categories {
+    display: grid;
+    gap: 2rem;
+}
+
+.post-exploit-category {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.post-exploit-category.persistence {
+    border-left: 3px solid #ffc107;
+}
+
+.post-exploit-category.cleanup {
+    border-left: 3px solid #17a2b8;
+}
+
+.post-exploit-category h4 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.method {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.method h5 {
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.protection-recommendations {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-left: 4px solid #20c997;
+}
+
+.protection-recommendations h3 {
+    color: #20c997;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.recommendation {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 3px solid #20c997;
+}
+
+.recommendation h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.recommendation ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    color: #555;
+}
+
+.recommendation li {
+    margin-bottom: 0.5rem;
+}
+
+/* 視覺化攻擊鏈圖片樣式 */
+.kill-chain-visualization {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    margin: 2rem 0 4rem 0;
+    color: white;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+}
+
+.chain-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.chain-header h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.chain-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* 圖表容器樣式 */
+.visual-diagram-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.diagram-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.diagram-section h4 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.kill-chain-diagram {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.kill-chain-diagram:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.diagram-caption {
+    margin-top: 1rem;
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.5;
+    color: #fff;
+}
+
+/* 社交工程相關樣式 */
+.social-engineering-methods {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #ff9800;
+}
+
+.credential-harvesting {
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #f44336;
+}
+
+.svg-vulnerabilities {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #4caf50;
+}
+
+.advanced-social-engineering {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #2196f3;
+}
+
+.social-engineering-methods h6,
+.credential-harvesting h6,
+.svg-vulnerabilities h6,
+.advanced-social-engineering h6 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.harvesting-method,
+.attack-type,
+.technique-category {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.harvesting-method h7,
+.attack-type h7,
+.technique-category h7 {
+    display: block;
+    color: #2c3e50;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.svg-attack-types {
+    display: grid;
+    gap: 1rem;
+}
+
+.advanced-techniques {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.source-item {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    border-left: 3px solid #3498db;
+}
+
+.source-item strong {
+    color: #2c3e50;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.platform-item {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid #9c27b0;
+}
+
+.platform-item strong {
+    color: #2c3e50;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.recon-platforms {
+    margin-top: 1rem;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .source-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .advanced-techniques {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 響應式設計調整 */
+@media (max-width: 768px) {
+    .warning-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .flow-steps {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .network-topology {
+        grid-template-columns: 1fr;
+    }
+    
+    .vuln-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+}
