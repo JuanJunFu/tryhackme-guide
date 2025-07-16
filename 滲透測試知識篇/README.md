@@ -203,7 +203,7 @@ A: 請：
 1. **基礎概念**：先閱讀首頁的 APT 和攻擊鏈介紹
 2. **核心條件**：理解「有弱點、可利用、無防護」三大條件
 3. **七大階段**：逐步學習每個攻擊階段的技術細節
-4. **實際案例**：深入研究 [WinRAR CVE-2023-40477案例]  (https://cloud.tencent.cn/developer/article/2324062?policyId=1004)
+4. **實際案例**：深入研究 [WinRAR CVE-2023-40477案例]<https://cloud.tencent.cn/developer/article/2324062?policyId=1004>
 5. **防禦工具**：了解對應的防禦和檢測技術
 
 ### 進階學習
