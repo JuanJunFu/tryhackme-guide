@@ -9,6 +9,10 @@ N8N_WEBHOOK_URL="https://n8n.forestrealty.org/webhook-test/02545a87-de3f-42f7-85
 INDEX_PATTERN="awswaf-*"
 LOG_FILE="/tmp/waf_log_$(date +%Y%m%d_%H%M%S).log"
 
+# 測試模式 - 如果設置為 true，將使用本地 24hr_log.txt 文件
+TEST_MODE="${TEST_MODE:-false}"
+LOCAL_LOG_FILE="24hr_log.txt"
+
 # 顏色輸出設定
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -61,69 +65,104 @@ build_search_query() {
             "timestamp": {
               "gte": "now-24h",
               "lte": "now",
-              "format": "strict_date_optional_time"
+              "format": "epoch_millis||strict_date_optional_time"
             }
           }
         }
       ],
       "should": [
-        { "term":    { "terminatingRuleMatchDetails.conditionType.keyword": "SQL_INJECTION" } },
-        { "term":    { "terminatingRuleMatchDetails.conditionType.keyword": "CROSS_SITE_SCRIPTING" } },
-        { "wildcard":{ "ruleGroupList.ruleGroupId.keyword": "*AmazonIpReputationList*" } },
-        { "wildcard":{ "ruleGroupList.ruleGroupId.keyword": "*AnonymousIpList*" } },
-        { "wildcard":{ "ruleGroupList.ruleGroupId.keyword": "*KnownBadInputsRuleSet*" } },
-        { "wildcard":{ "ruleGroupList.ruleGroupId.keyword": "*AdminProtectionRuleSet*" } }
+        { "term":    { "terminatingRuleMatchDetails.conditionType": "SQL_INJECTION" } },
+        { "term":    { "terminatingRuleMatchDetails.conditionType": "CROSS_SITE_SCRIPTING" } },
+        { "wildcard":{ "ruleGroupList.ruleGroupId": "*AWSManagedRulesAmazonIpReputationList*" } },
+        { "wildcard":{ "ruleGroupList.ruleGroupId": "*AWSManagedRulesAnonymousIpList*" } },
+        { "wildcard":{ "ruleGroupList.ruleGroupId": "*AWSManagedRulesKnownBadInputsRuleSet*" } },
+        { "wildcard":{ "ruleGroupList.ruleGroupId": "*AWSManagedRulesAdminProtectionRuleSet*" } },
+        { "wildcard":{ "ruleGroupList.ruleGroupId": "*AWSManagedRulesSQLiRuleSet*" } },
+        { "wildcard":{ "ruleGroupList.ruleGroupId": "*AWSManagedRulesCommonRuleSet*" } },
+        { "wildcard":{ "ruleGroupList.ruleGroupId": "*AWSManagedRulesWindowsRuleSet*" } }
       ],
       "minimum_should_match": 1
     }
-  }
+  },
+  "sort": [
+    {
+      "timestamp": {
+        "order": "desc"
+      }
+    }
+  ]
 }
 EOF
 }
 
 # 從OpenSearch獲取數據
 fetch_opensearch_data() {
-    log_info "開始從OpenSearch獲取WAF日志數據..."
-    
-    local query_json=$(build_search_query)
-    local temp_response="/tmp/opensearch_response_$(date +%s).json"
-    
-    # 發送請求到OpenSearch
-    curl -s -X GET "${OPENSEARCH_URL}/${INDEX_PATTERN}/_search" \
-        -H "Content-Type: application/json" \
-        -d "$query_json" \
-        -o "$temp_response" \
-        --connect-timeout 30 \
-        --max-time 60
-    
-    local curl_exit_code=$?
-    
-    if [ $curl_exit_code -ne 0 ]; then
-        log_error "OpenSearch請求失敗，退出碼: $curl_exit_code"
-        rm -f "$temp_response"
-        return 1
+    if [ "$TEST_MODE" = "true" ]; then
+        log_info "測試模式：使用本地文件 $LOCAL_LOG_FILE"
+        
+        if [ ! -f "$LOCAL_LOG_FILE" ]; then
+            log_error "本地測試文件不存在: $LOCAL_LOG_FILE"
+            return 1
+        fi
+        
+        local temp_response="/tmp/opensearch_response_$(date +%s).json"
+        cp "$LOCAL_LOG_FILE" "$temp_response"
+        
+        # 檢查是否有命中結果
+        local hit_count=$(jq -r '.hits.total.value // 0' "$temp_response")
+        log_info "本地文件中找到 $hit_count 條記錄"
+        
+        if [ "$hit_count" -eq 0 ]; then
+            log_warning "本地文件中沒有找到記錄"
+            rm -f "$temp_response"
+            return 2
+        fi
+        
+        echo "$temp_response"
+        return 0
+    else
+        log_info "開始從OpenSearch獲取WAF日志數據..."
+        
+        local query_json=$(build_search_query)
+        local temp_response="/tmp/opensearch_response_$(date +%s).json"
+        
+        # 發送請求到OpenSearch
+        curl -s -X GET "${OPENSEARCH_URL}/${INDEX_PATTERN}/_search" \
+            -H "Content-Type: application/json" \
+            -d "$query_json" \
+            -o "$temp_response" \
+            --connect-timeout 30 \
+            --max-time 60
+        
+        local curl_exit_code=$?
+        
+        if [ $curl_exit_code -ne 0 ]; then
+            log_error "OpenSearch請求失敗，退出碼: $curl_exit_code"
+            rm -f "$temp_response"
+            return 1
+        fi
+        
+        # 檢查響應是否包含錯誤
+        if jq -e '.error' "$temp_response" > /dev/null 2>&1; then
+            log_error "OpenSearch返回錯誤:"
+            jq '.error' "$temp_response" | tee -a "${LOG_FILE}"
+            rm -f "$temp_response"
+            return 1
+        fi
+        
+        # 檢查是否有命中結果
+        local hit_count=$(jq -r '.hits.total.value // 0' "$temp_response")
+        log_info "找到 $hit_count 條匹配記錄"
+        
+        if [ "$hit_count" -eq 0 ]; then
+            log_warning "過去24小時內沒有找到匹配的安全事件"
+            rm -f "$temp_response"
+            return 2
+        fi
+        
+        echo "$temp_response"
+        return 0
     fi
-    
-    # 檢查響應是否包含錯誤
-    if jq -e '.error' "$temp_response" > /dev/null 2>&1; then
-        log_error "OpenSearch返回錯誤:"
-        jq '.error' "$temp_response" | tee -a "${LOG_FILE}"
-        rm -f "$temp_response"
-        return 1
-    fi
-    
-    # 檢查是否有命中結果
-    local hit_count=$(jq -r '.hits.total.value // 0' "$temp_response")
-    log_info "找到 $hit_count 條匹配記錄"
-    
-    if [ "$hit_count" -eq 0 ]; then
-        log_warning "過去24小時內沒有找到匹配的安全事件"
-        rm -f "$temp_response"
-        return 2
-    fi
-    
-    echo "$temp_response"
-    return 0
 }
 
 # 處理和格式化數據
@@ -139,15 +178,20 @@ process_data() {
         total_hits: .hits.total.value,
         events: [
             .hits.hits[] | {
-                timestamp: ._source.timestamp,
+                timestamp: (._source.timestamp | tostring),
+                formatted_time: (._source.timestamp / 1000 | strftime("%Y-%m-%d %H:%M:%S")),
                 source_ip: ._source.httpRequest.clientIp,
                 action: ._source.action,
-                terminatingRule: ._source.terminatingRuleMatchDetails.conditionType,
+                terminatingRule: ._source.terminatingRuleMatchDetails[0].conditionType // null,
+                terminatingRuleId: ._source.terminatingRuleId,
                 ruleGroups: [._source.ruleGroupList[]?.ruleGroupId],
                 uri: ._source.httpRequest.uri,
                 method: ._source.httpRequest.httpMethod,
                 country: ._source.httpRequest.country,
-                userAgent: ._source.httpRequest.headers[]? | select(.name == "User-Agent") | .value
+                userAgent: (._source.httpRequest.headers[]? | select(.name == "user-agent") | .value) // "Unknown",
+                matchedData: ._source.terminatingRuleMatchDetails[0].matchedData // [],
+                sensitivityLevel: ._source.terminatingRuleMatchDetails[0].sensitivityLevel // null,
+                labels: [._source.labels[]?.name] // []
             }
         ]
     }' "$response_file" > "$processed_data"
@@ -205,9 +249,35 @@ cleanup() {
     rm -f /tmp/processed_waf_data_*.json
 }
 
+# 顯示使用說明
+show_usage() {
+    echo "AWS WAF日志發送到n8n腳本"
+    echo ""
+    echo "使用方法:"
+    echo "  $0                     # 正常模式：從OpenSearch獲取數據"
+    echo "  TEST_MODE=true $0      # 測試模式：使用本地 24hr_log.txt 文件"
+    echo ""
+    echo "範例:"
+    echo "  bash send_today_log.sh"
+    echo "  TEST_MODE=true bash send_today_log.sh"
+    echo ""
+    exit 0
+}
+
 # 主執行函數
 main() {
+    # 檢查是否需要顯示幫助
+    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+        show_usage
+    fi
+    
     log_info "========== AWS WAF日志發送腳本開始執行 =========="
+    
+    if [ "$TEST_MODE" = "true" ]; then
+        log_info "執行模式：測試模式（使用本地文件）"
+    else
+        log_info "執行模式：正常模式（從OpenSearch獲取）"
+    fi
     
     # 設置錯誤處理
     trap cleanup EXIT
